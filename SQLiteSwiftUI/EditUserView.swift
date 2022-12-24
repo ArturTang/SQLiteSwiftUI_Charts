@@ -77,7 +77,7 @@ struct EditUserView: View {
             let userModel: UserModel = DB_Manager().getUser(idValue: self.id)
              
             // populate in text fields
-            self.username = userModel.username
+            self.username = userModel.expense
             self.email = userModel.email
             self.age = String(userModel.age)
             self.price = String(userModel.price)

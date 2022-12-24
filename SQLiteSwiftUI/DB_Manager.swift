@@ -20,7 +20,7 @@ class DB_Manager {
  
     // columns instances of table
     private var id: Expression<Int64>!
-    private var username: Expression<String>!
+    private var expense: Expression<String>!
     private var email: Expression<String>!
     private var age: Expression<Int64>!
     private var price: Expression<Int64>!
@@ -43,7 +43,7 @@ class DB_Manager {
              
             // create instances of each column
             id = Expression<Int64>("id")
-            username = Expression<String>("name")
+            expense = Expression<String>("name")
             email = Expression<String>("email")
             age = Expression<Int64>("age")
             price = Expression<Int64>("price")
@@ -54,7 +54,7 @@ class DB_Manager {
                 // if not, then create the table
                 try db.run(users.create { (t) in
                     t.column(id, primaryKey: true)
-                    t.column(username)
+                    t.column(expense)
                     t.column(email, unique: true)
                     t.column(age)
                     t.column(price)
@@ -73,7 +73,7 @@ class DB_Manager {
     
     public func addUser(usernameValue: String, emailValue: String, ageValue: Int64, priceValue: Int64) {
         do {
-            try db.run(users.insert(username <- usernameValue, email <- emailValue, age <- ageValue, price <- priceValue))
+            try db.run(users.insert(expense <- usernameValue, email <- emailValue, age <- ageValue, price <- priceValue))
         } catch {
             print(error.localizedDescription)
         }
@@ -99,7 +99,7 @@ class DB_Manager {
      
                 // set values in model from database
                 userModel.id = user[id]
-                userModel.username = user[username]
+                userModel.expense = user[expense]
                 userModel.email = user[email]
                 userModel.age = user[age]
                 userModel.price = user[price]
@@ -132,7 +132,7 @@ class DB_Manager {
      
                 // set values in model
                 userModel.id = try rowValue.get(id)
-                userModel.username = try rowValue.get(username)
+                userModel.expense = try rowValue.get(expense)
                 userModel.email = try rowValue.get(email)
                 userModel.age = try rowValue.get(age)
                 userModel.price = try rowValue.get(price)
@@ -152,7 +152,7 @@ class DB_Manager {
             let user: Table = users.filter(id == idValue)
              
             // run the update query
-            try db.run(user.update(username <- usernameValue, email <- emailValue, age <- ageValue, price <- priceValue))
+            try db.run(user.update(expense <- usernameValue, email <- emailValue, age <- ageValue, price <- priceValue))
         } catch {
             print(error.localizedDescription)
         }

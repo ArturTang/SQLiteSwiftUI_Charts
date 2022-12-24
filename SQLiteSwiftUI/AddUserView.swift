@@ -10,7 +10,7 @@ import SwiftUI
 struct AddUserView: View {
      
     // create variables to store user input values
-    @State var username: String = ""
+    @State var expense: String = ""
     @State var email: String = ""
     @State var age: String = ""
     @State var price: String = ""
@@ -22,7 +22,7 @@ struct AddUserView: View {
          
         VStack {
             // create name field
-            TextField("Enter username", text: $username)
+            TextField("Enter expense", text: $expense)
                 .padding(10)
                 .background(Color(.systemGray6))
                 .cornerRadius(5)
@@ -56,7 +56,7 @@ struct AddUserView: View {
             // button to add a user
             Button(action: {
                 // call function to add row in sqlite database
-                DB_Manager().addUser(usernameValue: self.username, emailValue: self.email, ageValue: Int64(self.age) ?? 0, priceValue: Int64(self.price) ?? 0)
+                DB_Manager().addUser(usernameValue: self.expense, emailValue: self.email, ageValue: Int64(self.age) ?? 0, priceValue: Int64(self.price) ?? 0)
                  
                 // go back to home page
                 self.mode.wrappedValue.dismiss()

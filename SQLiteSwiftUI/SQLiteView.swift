@@ -28,7 +28,7 @@ struct SQLiteView: View {
                 HStack {
                     Spacer()
                     NavigationLink (destination: AddUserView(), label: {
-                        Text("Add user")
+                        Text("Add expense")
                     })
                 }
          
@@ -43,7 +43,7 @@ struct SQLiteView: View {
                  
                     // show name, email and age horizontally
                     HStack {
-                        Text(model.username)
+                        Text(model.expense)
                         Spacer()
                         Text(model.email)
                         Spacer()
@@ -92,7 +92,7 @@ struct SQLiteView: View {
                 self.userModels = DB_Manager().getUsers()
             })
             .padding()
-            .navigationBarTitle("SQLite")
+            .navigationBarTitle("My Costs")
         }
         
     }

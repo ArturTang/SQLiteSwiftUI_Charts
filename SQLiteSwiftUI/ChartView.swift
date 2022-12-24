@@ -25,9 +25,9 @@ struct ChartView: View {
          
             VStack {
          
-                BarChartView(data: ChartData(values: userModels.map { ($0.username, $0.age) } ), title: "Ages", legend: "username", form: ChartForm.extraLarge)
+                BarChartView(data: ChartData(values: userModels.map { ($0.expense, $0.age) } ), title: "Expenses", legend: "expense", form: ChartForm.extraLarge)
                 
-                LineView(data: userModels.map { Double($0.price) }, title: "Prices", legend: "price par username")
+                LineView(data: userModels.map { Double($0.price) }, title: "Prices", legend: "price par expense")
          
             }
             // load data in user models array
@@ -49,5 +49,5 @@ struct ChartView_Previews: PreviewProvider {
 
 import Foundation
 let us : [UserModel] = []
-let usrs = us.map { ($0.username, $0.age) }
+let usrs = us.map { ($0.expense, $0.age) }
 

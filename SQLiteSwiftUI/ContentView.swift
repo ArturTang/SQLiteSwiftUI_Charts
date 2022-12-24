@@ -12,7 +12,7 @@ struct ContentView: View {
         TabView {
             SQLiteView()
             .tabItem {
-                Label("SQLite", systemImage: "list.dash")
+                Label("My Costs", systemImage: "list.dash")
             }
 
             ChartView()
